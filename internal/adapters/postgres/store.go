@@ -9,6 +9,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"math"
 	"strings"
 	"time"
 
@@ -102,7 +103,7 @@ func (s *Store) Apply(ctx context.Context, cs recon.ChangeSet) error {
 		for _, m := range cs.Matches {
 			b.Queue(`INSERT INTO matches (id, leg_ids, tier, rule_id, confidence, residual_minor, currency, matched_at)
 			         VALUES ($1,$2,$3,$4,$5,$6,$7,$8) ON CONFLICT (id) DO NOTHING`,
-				m.ID, m.LegIDs, int16(m.Tier), m.RuleID, m.Confidence, m.ResidualMinor, m.Currency, m.MatchedAt)
+				m.ID, m.LegIDs, tierSmallInt(m.Tier), m.RuleID, m.Confidence, m.ResidualMinor, m.Currency, m.MatchedAt)
 		}
 		for _, br := range cs.Breaks {
 			b.Queue(`INSERT INTO breaks (id, leg_ids, currency, counterparty, category, confidence, classifier_id, trigger, status, opened_at, resolved_at, reason, actor)
@@ -115,11 +116,14 @@ func (s *Store) Apply(ctx context.Context, cs recon.ChangeSet) error {
 				ev.Type, ev.At, ev.AggregateID, []byte(ev.Payload))
 		}
 		res := tx.SendBatch(ctx, b)
-		defer res.Close()
 		for i := 0; i < b.Len(); i++ {
 			if _, err := res.Exec(); err != nil {
+				_ = res.Close() // already failing; the original error is what matters
 				return fmt.Errorf("apply change set (stmt %d): %w", i, err)
 			}
+		}
+		if err := res.Close(); err != nil {
+			return fmt.Errorf("close batch: %w", err)
 		}
 		return nil
 	})
@@ -392,4 +396,17 @@ func nonNil(m map[string]string) map[string]string {
 		return map[string]string{}
 	}
 	return m
+}
+
+// tierSmallInt converts a Tier to the SMALLINT column type. Tiers are 1..3 by
+// construction; anything outside the int16 range is clamped rather than wrapped.
+func tierSmallInt(t recon.Tier) int16 {
+	switch {
+	case t > math.MaxInt16:
+		return math.MaxInt16
+	case t < math.MinInt16:
+		return math.MinInt16
+	default:
+		return int16(t)
+	}
 }

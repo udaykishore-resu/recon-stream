@@ -33,6 +33,7 @@ type Hooks struct {
 // Outcome is what happened to one ingested leg.
 type Outcome string
 
+// Outcomes an ingested leg can end in.
 const (
 	OutcomeDuplicate     Outcome = "duplicate"      // exact re-delivery, ignored
 	OutcomeMatched       Outcome = "matched"        // joined a Match

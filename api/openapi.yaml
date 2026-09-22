@@ -14,12 +14,19 @@ info:
     identifier: Apache-2.0
 servers:
   - url: http://localhost:8080
+security:
+  - bearerAuth: []
 tags:
   - name: legs
+    description: Ingest and inspect transaction legs.
   - name: breaks
+    description: Unmatched legs with a classification and a resolution workflow.
   - name: matches
+    description: Sets of legs the engine considers the same economic event.
   - name: operations
+    description: Statistics, event log, replay and window management.
   - name: health
+    description: Liveness, readiness and Prometheus metrics; unauthenticated.
 paths:
   /v1/legs:
     post:
@@ -208,6 +215,7 @@ paths:
                   open_legs_index: { type: integer }
                   rules: { $ref: '#/components/schemas/Rules' }
                   version: { type: string }
+        '4XX': { $ref: '#/components/responses/ClientError' }
         '500': { $ref: '#/components/responses/Internal' }
   /v1/events:
     get:
@@ -282,28 +290,41 @@ paths:
       tags: [health]
       summary: Liveness
       operationId: healthz
+      security: []
       responses:
         '200':
           description: Alive
+        '4XX': { $ref: '#/components/responses/ClientError' }
   /readyz:
     get:
       tags: [health]
       summary: Readiness (store ping + source ping)
       operationId: readyz
+      security: []
       responses:
         '200': { description: Ready }
+        '4XX': { $ref: '#/components/responses/ClientError' }
         '503': { description: A dependency is unavailable }
   /metrics:
     get:
       tags: [health]
       summary: Prometheus metrics
       operationId: metrics
+      security: []
       responses:
         '200':
           description: Exposition format
           content:
             text/plain: {}
+        '4XX': { $ref: '#/components/responses/ClientError' }
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: |
+        Bearer token for the /v1 API. The service itself does not validate tokens;
+        enforcement is expected from the ingress / API gateway in front of it.
   parameters:
     id:
       name: id
@@ -326,6 +347,11 @@ components:
       content:
         application/json:
           schema: { $ref: '#/components/schemas/Error' }
+    ClientError:
+      description: Client error
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
     Internal:
       description: Internal error
       content:
@@ -345,7 +371,7 @@ components:
       type: object
       required: [source, txn_ref, amount_minor, currency, value_date, direction, counterparty]
       properties:
-        source: { type: string, description: Originating system, e.g. ledger, card_network, swift }
+        source: { type: string, description: 'Originating system, e.g. ledger, card_network, swift' }
         txn_ref: { type: string }
         amount_minor: { type: integer, format: int64, minimum: 1, description: Positive amount in minor units }
         currency: { type: string, pattern: '^[A-Za-z]{3}$' }

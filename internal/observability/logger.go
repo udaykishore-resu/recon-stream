@@ -37,6 +37,8 @@ func NewLogger(level string, w io.Writer) *slog.Logger {
 // traceHandler injects trace_id/span_id and request_id from the context.
 type traceHandler struct{ slog.Handler }
 
+// Handle enriches the record with trace/span and request IDs found on ctx
+// before delegating to the wrapped handler.
 func (h *traceHandler) Handle(ctx context.Context, r slog.Record) error {
 	if sc := trace.SpanContextFromContext(ctx); sc.IsValid() {
 		r.AddAttrs(slog.String("trace_id", sc.TraceID().String()), slog.String("span_id", sc.SpanID().String()))
@@ -47,10 +49,12 @@ func (h *traceHandler) Handle(ctx context.Context, r slog.Record) error {
 	return h.Handler.Handle(ctx, r)
 }
 
+// WithAttrs returns a traceHandler whose wrapped handler carries attrs.
 func (h *traceHandler) WithAttrs(attrs []slog.Attr) slog.Handler {
 	return &traceHandler{Handler: h.Handler.WithAttrs(attrs)}
 }
 
+// WithGroup returns a traceHandler whose wrapped handler opens group name.
 func (h *traceHandler) WithGroup(name string) slog.Handler {
 	return &traceHandler{Handler: h.Handler.WithGroup(name)}
 }

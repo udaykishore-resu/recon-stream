@@ -1,13 +1,13 @@
 package observability
 
 import (
+	"net/http"
 	"strconv"
 	"time"
 
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/collectors"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"net/http"
 
 	"github.com/udaykishore-resu/recon-stream/internal/domain/recon"
 )

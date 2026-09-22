@@ -32,7 +32,7 @@ func TestSubsetSumTable(t *testing.T) {
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
-			got, ok := subsetSum(legsFromAmounts(tc.pool), tc.target, tc.tol, tc.min, tc.max, nil)
+			got, ok := subsetSum(legsFromAmounts(tc.pool), tc.target, tc.tol, tc.min, tc.max)
 			if ok != tc.wantSum {
 				t.Fatalf("ok=%v want %v (%v)", ok, tc.wantSum, got)
 			}
@@ -70,7 +70,7 @@ func TestSubsetSumProperty(t *testing.T) {
 			target += amts[i]
 		}
 		tol := rng.Int63n(3)
-		got, ok := subsetSum(legsFromAmounts(amts), target, tol, 2, 6, nil)
+		got, ok := subsetSum(legsFromAmounts(amts), target, tol, 2, 6)
 		if !ok {
 			t.Fatalf("iter %d: planted subset of size %d not found (pool=%v target=%d)", iter, k, amts, target)
 		}
@@ -98,7 +98,7 @@ func FuzzSubsetSum(f *testing.F) {
 			}
 			amts = append(amts, int64(b))
 		}
-		got, ok := subsetSum(legsFromAmounts(amts), int64(target), int64(tol), 2, 6, nil)
+		got, ok := subsetSum(legsFromAmounts(amts), int64(target), int64(tol), 2, 6)
 		if !ok {
 			return
 		}

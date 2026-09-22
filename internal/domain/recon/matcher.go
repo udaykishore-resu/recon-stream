@@ -131,7 +131,7 @@ func (m matcher) tier3(l Leg, scan func() []Leg, ix *Index) (Match, bool) {
 	for _, src := range sortedKeys(bySource) {
 		p := capCandidates(bySource[src], m.rules.T3MaxCandidates)
 		tol := m.rules.Tolerance(l.AmountMinor)
-		if subset, ok := subsetSum(p, l.AmountMinor, tol, 2, m.rules.T3MaxSubset, nil); ok {
+		if subset, ok := subsetSum(p, l.AmountMinor, tol, 2, m.rules.T3MaxSubset); ok {
 			return m.many(l, subset, TierManyToOne, RuleT3Subset, tol), true
 		}
 	}
@@ -161,7 +161,7 @@ func (m matcher) tier3(l Leg, scan func() []Leg, ix *Index) (Match, bool) {
 		})
 		p = capCandidates(p, m.rules.T3MaxCandidates)
 		tol := m.rules.Tolerance(s.AmountMinor)
-		rest, ok := subsetSum(p, s.AmountMinor-l.AmountMinor, tol, 1, m.rules.T3MaxSubset-1, nil)
+		rest, ok := subsetSum(p, s.AmountMinor-l.AmountMinor, tol, 1, m.rules.T3MaxSubset-1)
 		if !ok {
 			continue
 		}
@@ -205,7 +205,8 @@ func (m matcher) pair(l, c Leg, tier Tier, rule string, conf float64) Match {
 
 // many builds a T3 match; residual is sum(many) - anchor.
 func (m matcher) many(anchor Leg, many []Leg, tier Tier, rule string, tol int64) Match {
-	ids := []string{anchor.ID}
+	ids := make([]string, 0, 1+len(many))
+	ids = append(ids, anchor.ID)
 	var sum int64
 	for _, x := range many {
 		ids = append(ids, x.ID)
@@ -229,7 +230,7 @@ func (m matcher) many(anchor Leg, many []Leg, tier Tier, rule string, tol int64)
 // size in [minSize,maxSize] whose amounts sum to target ± tol. Amounts are
 // positive, so the search prunes when the running sum exceeds target+tol.
 // Complexity is bounded by len(pool) <= T3MaxCandidates and depth <= maxSize.
-func subsetSum(pool []Leg, target, tol int64, minSize, maxSize int, chosen []Leg) ([]Leg, bool) {
+func subsetSum(pool []Leg, target, tol int64, minSize, maxSize int) ([]Leg, bool) {
 	if maxSize <= 0 || len(pool) == 0 {
 		return nil, false
 	}
@@ -265,7 +266,7 @@ func subsetSum(pool []Leg, target, tol int64, minSize, maxSize int, chosen []Leg
 		return false
 	}
 	if dfs(0, target, 0) {
-		return append(chosen, out...), true
+		return out, true
 	}
 	return nil, false
 }

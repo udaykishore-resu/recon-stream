@@ -18,6 +18,7 @@ import (
 // Direction is the accounting direction of a leg as seen by its source.
 type Direction string
 
+// Accounting directions of a leg.
 const (
 	Debit  Direction = "debit"
 	Credit Direction = "credit"
@@ -26,6 +27,7 @@ const (
 // LegStatus is the lifecycle state of a leg inside the engine.
 type LegStatus string
 
+// Lifecycle states of a leg.
 const (
 	LegOpen    LegStatus = "open"    // waiting in the window for a counterparty leg
 	LegMatched LegStatus = "matched" // part of a Match
@@ -50,7 +52,7 @@ func ParseDate(s string) (Date, error) {
 }
 
 // String formats the date as YYYY-MM-DD.
-func (d Date) String() string { return d.Time.Format("2006-01-02") }
+func (d Date) String() string { return d.Format("2006-01-02") }
 
 // MarshalJSON implements json.Marshaler.
 func (d Date) MarshalJSON() ([]byte, error) { return json.Marshal(d.String()) }

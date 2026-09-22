@@ -40,7 +40,7 @@ func main() {
 		}
 	}
 	seq := 0
-	ref := func(prefix string) string { seq++; return fmt.Sprintf("%s-%06d", prefix, 240000+seq) }
+	ref := func() string { seq++; return fmt.Sprintf("TXN-%06d", 240000+seq) }
 	arn := func() string { return fmt.Sprintf("7451%019d", rng.Int63n(1e15)) }
 
 	var ledger, rail []recon.Leg
@@ -68,7 +68,7 @@ func main() {
 	// 76 clean T1 pairs (152 legs): same ref, same amount, settled T+1.
 	for i := 0; i < 76; i++ {
 		ccy, cp := network(i)
-		r, a := ref("TXN"), amount(500, 250_000)
+		r, a := ref(), amount(500, 250_000)
 		d := d14
 		if i%2 == 0 {
 			d = d15
@@ -79,7 +79,7 @@ func main() {
 	// 9 T2 pairs (18 legs): rounding differences of 1-2 minor units on FX-converted interchange.
 	for i := 0; i < 9; i++ {
 		ccy, cp := network(i)
-		r, a := ref("TXN"), amount(20_000, 400_000)
+		r, a := ref(), amount(20_000, 400_000)
 		delta := int64(1 + rng.Intn(2))
 		if i%2 == 0 {
 			delta = -delta
@@ -98,39 +98,39 @@ func main() {
 		for i := 0; i < n; i++ {
 			a := amount(1_000, 90_000)
 			sum += a
-			ledgerLeg(ref("TXN"), a, "USD", "VISA", d15, map[string]string{recon.AttrBatchRef: batch})
+			ledgerLeg(ref(), a, "USD", "VISA", d15, map[string]string{recon.AttrBatchRef: batch})
 		}
 		railLeg(batch, sum, "USD", "VISA", d16, map[string]string{"record_type": "batch_settlement"})
 	}
 	// 2 T2 amount+date pairs (4 legs): the network reports its ARN instead of our ref.
 	for i := 0; i < 2; i++ {
 		a := amount(300_000, 900_000)
-		ledgerLeg(ref("TXN"), a, "USD", "VISA", d15, map[string]string{"note": "ref not echoed by network"})
+		ledgerLeg(ref(), a, "USD", "VISA", d15, map[string]string{"note": "ref not echoed by network"})
 		railLeg("ARN-"+arn()[:12], a, "USD", "VISA", d16, nil)
 	}
 	// Break: fee deducted at source (2 legs).
 	{
-		r, a := ref("TXN"), amount(100_000, 300_000)
+		r, a := ref(), amount(100_000, 300_000)
 		fee := a * 25 / 1000 // 2.5% interchange netted from the settlement
 		ledgerLeg(r, a, "USD", "VISA", d15, nil)
 		railLeg(r, a-fee, "USD", "VISA", d16, map[string]string{"interchange_minor": fmt.Sprint(fee), "record_type": "net_settlement"})
 	}
 	// Break: FX drift (2 legs): booked in USD, settled in EUR.
 	{
-		r, a := ref("TXN"), amount(50_000, 120_000)
+		r, a := ref(), amount(50_000, 120_000)
 		eur := int64(float64(a) * 0.9183)
 		ledgerLeg(r, a, "USD", "VISA", d15, map[string]string{"original_currency": "EUR"})
 		railLeg(r, eur, "EUR", "VISA", d16, map[string]string{"fx_rate": "0.9183", "settlement_currency": "EUR"})
 	}
 	// Break: timing (2 legs): settled 6 days later, outside the ±2 day window.
 	{
-		r, a := ref("TXN"), amount(10_000, 60_000)
+		r, a := ref(), amount(10_000, 60_000)
 		ledgerLeg(r, a, "GBP", "MASTERCARD", d14, nil)
 		railLeg(r, a, "GBP", "MASTERCARD", recon.NewDate(2026, 9, 20), map[string]string{"settlement_file": "MASTERCARD-STL-20260920-01"})
 	}
 	// Break: unsettled ledger entries (2 legs): no network record at all.
-	ledgerLeg(ref("TXN"), amount(5_000, 40_000), "USD", "VISA", d15, map[string]string{"note": "authorised, never presented"})
-	ledgerLeg(ref("TXN"), amount(5_000, 40_000), "GBP", "MASTERCARD", d15, map[string]string{"note": "authorised, never presented"})
+	ledgerLeg(ref(), amount(5_000, 40_000), "USD", "VISA", d15, map[string]string{"note": "authorised, never presented"})
+	ledgerLeg(ref(), amount(5_000, 40_000), "GBP", "MASTERCARD", d15, map[string]string{"note": "authorised, never presented"})
 
 	// Break: duplicated settlement record (1 leg): the first clean pair's rail leg, re-sent in a second file.
 	dup := rail[0]

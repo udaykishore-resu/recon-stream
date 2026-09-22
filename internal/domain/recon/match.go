@@ -11,6 +11,7 @@ import (
 // Tier is the deterministic matching tier that produced a Match.
 type Tier int
 
+// Matching tiers, in order of decreasing strictness.
 const (
 	TierExact     Tier = 1 // T1: ref + amount + currency exact, value date in window
 	TierTolerant  Tier = 2 // T2: amount within tolerance, value date in window
@@ -32,6 +33,7 @@ type Match struct {
 // Category is the classifier-assigned reason for a Break.
 type Category string
 
+// Break categories a classifier can assign.
 const (
 	CatFee                 Category = "fee"
 	CatFXDrift             Category = "fx_drift"
@@ -44,6 +46,7 @@ const (
 // BreakStatus is the workflow state of a Break.
 type BreakStatus string
 
+// Workflow states of a Break.
 const (
 	BreakOpen     BreakStatus = "open"
 	BreakResolved BreakStatus = "resolved"

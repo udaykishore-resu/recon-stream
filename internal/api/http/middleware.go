@@ -22,6 +22,8 @@ type responseWriter struct {
 	route  string
 }
 
+// WriteHeader records the first status code written and forwards it to the
+// underlying ResponseWriter.
 func (rw *responseWriter) WriteHeader(code int) {
 	if rw.status == 0 {
 		rw.status = code
