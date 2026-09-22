@@ -1,0 +1,465 @@
+openapi: 3.1.0
+info:
+  title: recon-stream API
+  version: 1.0.0
+  summary: Real-time reconciliation engine for ledgers, payment rails and card processors.
+  description: |
+    Legs are ingested (HTTP batch or Kafka), matched by deterministic ordered tiers
+    (T1 exact, T2 tolerant, T3 many-to-one) and otherwise turned into classified
+    Breaks. Every state transition is appended to an event log that can be replayed.
+  contact:
+    name: Udaykishore Resu
+  license:
+    name: Apache-2.0
+    identifier: Apache-2.0
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: legs
+  - name: breaks
+  - name: matches
+  - name: operations
+  - name: health
+paths:
+  /v1/legs:
+    post:
+      tags: [legs]
+      summary: Ingest a batch of legs
+      description: |
+        Idempotent: a leg is identified by `source:txn_ref:sha256(content)[:12]`; re-delivering
+        an identical leg is recorded as a `leg.duplicate` event and changes nothing. Validation is
+        all-or-nothing for the batch; processing is per leg, each persisted atomically.
+      operationId: ingestLegs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: object
+                  required: [legs]
+                  properties:
+                    legs:
+                      type: array
+                      maxItems: 5000
+                      items: { $ref: '#/components/schemas/LegInput' }
+                - type: array
+                  maxItems: 5000
+                  items: { $ref: '#/components/schemas/LegInput' }
+            examples:
+              pair:
+                value:
+                  legs:
+                    - { source: ledger, txn_ref: TXN-240001, amount_minor: 38002, currency: GBP, value_date: "2026-09-15", direction: debit, counterparty: MASTERCARD }
+                    - { source: card_network, txn_ref: TXN-240001, amount_minor: 38002, currency: GBP, value_date: "2026-09-16", direction: credit, counterparty: MASTERCARD }
+      responses:
+        '200':
+          description: Per-leg outcomes
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/BatchResult' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '413': { $ref: '#/components/responses/TooLarge' }
+        '500': { $ref: '#/components/responses/Internal' }
+  /v1/legs/{id}:
+    get:
+      tags: [legs]
+      summary: Fetch a leg by ID
+      operationId: getLeg
+      parameters: [{ $ref: '#/components/parameters/id' }]
+      responses:
+        '200':
+          description: The leg
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Leg' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /v1/breaks:
+    get:
+      tags: [breaks]
+      summary: List breaks
+      operationId: listBreaks
+      parameters:
+        - name: status
+          in: query
+          schema: { type: string, enum: [open, resolved] }
+        - name: category
+          in: query
+          schema: { $ref: '#/components/schemas/Category' }
+        - name: currency
+          in: query
+          schema: { type: string, minLength: 3, maxLength: 3 }
+        - name: counterparty
+          in: query
+          schema: { type: string }
+        - name: min_age
+          in: query
+          description: Go duration, e.g. `30m`, `2h`
+          schema: { type: string }
+        - name: limit
+          in: query
+          schema: { type: integer, minimum: 1, maximum: 1000, default: 100 }
+        - name: offset
+          in: query
+          schema: { type: integer, minimum: 0, default: 0 }
+      responses:
+        '200':
+          description: Breaks ordered oldest first
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [breaks, count, limit, offset]
+                properties:
+                  breaks:
+                    type: array
+                    items: { $ref: '#/components/schemas/Break' }
+                  count: { type: integer }
+                  limit: { type: integer }
+                  offset: { type: integer }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '500': { $ref: '#/components/responses/Internal' }
+  /v1/breaks/{id}:
+    get:
+      tags: [breaks]
+      summary: Fetch a break with its legs
+      operationId: getBreak
+      parameters: [{ $ref: '#/components/parameters/id' }]
+      responses:
+        '200':
+          description: Break and legs
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [break, legs]
+                properties:
+                  break: { $ref: '#/components/schemas/Break' }
+                  legs:
+                    type: array
+                    items: { $ref: '#/components/schemas/Leg' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /v1/breaks/{id}/resolve:
+    post:
+      tags: [breaks]
+      summary: Resolve a break
+      description: Records `reason` and `actor`, emits a `break.resolved` audit event. Manual resolutions survive replays.
+      operationId: resolveBreak
+      parameters: [{ $ref: '#/components/parameters/id' }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [reason, actor]
+              properties:
+                reason: { type: string, minLength: 1 }
+                actor: { type: string, minLength: 1 }
+      responses:
+        '200':
+          description: The resolved break
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Break' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '409':
+          description: Break already resolved
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '500': { $ref: '#/components/responses/Internal' }
+  /v1/matches/{id}:
+    get:
+      tags: [matches]
+      summary: Fetch a match with its legs
+      operationId: getMatch
+      parameters: [{ $ref: '#/components/parameters/id' }]
+      responses:
+        '200':
+          description: Match and legs
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [match, legs]
+                properties:
+                  match: { $ref: '#/components/schemas/Match' }
+                  legs:
+                    type: array
+                    items: { $ref: '#/components/schemas/Leg' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /v1/stats:
+    get:
+      tags: [operations]
+      summary: Aggregate reconciliation statistics and active rules
+      operationId: getStats
+      responses:
+        '200':
+          description: Stats
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [stats, open_legs_index, rules, version]
+                properties:
+                  stats: { $ref: '#/components/schemas/Stats' }
+                  open_legs_index: { type: integer }
+                  rules: { $ref: '#/components/schemas/Rules' }
+                  version: { type: string }
+        '500': { $ref: '#/components/responses/Internal' }
+  /v1/events:
+    get:
+      tags: [operations]
+      summary: Read the append-only event log
+      operationId: listEvents
+      parameters:
+        - name: from
+          in: query
+          schema: { type: integer, minimum: 1, default: 1 }
+        - name: limit
+          in: query
+          schema: { type: integer, minimum: 1, maximum: 1000, default: 100 }
+      responses:
+        '200':
+          description: Events ascending by seq
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [events, count]
+                properties:
+                  events:
+                    type: array
+                    items: { $ref: '#/components/schemas/Event' }
+                  count: { type: integer }
+        '400': { $ref: '#/components/responses/BadRequest' }
+  /v1/replay:
+    post:
+      tags: [operations]
+      summary: Rebuild projections from the event log
+      description: |
+        Clears legs/matches/breaks, then re-feeds every `leg.ingested` event with `seq >= from`
+        through the current rules and re-applies manual `break.resolved` events. The event log
+        itself is never modified; a `replay.started` marker is appended.
+      operationId: replay
+      parameters:
+        - name: from
+          in: query
+          schema: { type: integer, minimum: 1, default: 1 }
+      responses:
+        '200':
+          description: Replay summary
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ReplayResult' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '500': { $ref: '#/components/responses/Internal' }
+  /v1/windows/close:
+    post:
+      tags: [operations]
+      summary: Force-expire open legs (EOD cut-off)
+      operationId: closeWindow
+      parameters:
+        - name: older_than
+          in: query
+          description: Only legs ingested at least this long ago (Go duration). Default `0` = all open legs.
+          schema: { type: string }
+      responses:
+        '200':
+          description: Number of legs turned into breaks
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  expired: { type: integer }
+                  older_than: { type: string }
+        '400': { $ref: '#/components/responses/BadRequest' }
+  /healthz:
+    get:
+      tags: [health]
+      summary: Liveness
+      operationId: healthz
+      responses:
+        '200':
+          description: Alive
+  /readyz:
+    get:
+      tags: [health]
+      summary: Readiness (store ping + source ping)
+      operationId: readyz
+      responses:
+        '200': { description: Ready }
+        '503': { description: A dependency is unavailable }
+  /metrics:
+    get:
+      tags: [health]
+      summary: Prometheus metrics
+      operationId: metrics
+      responses:
+        '200':
+          description: Exposition format
+          content:
+            text/plain: {}
+components:
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      schema: { type: string }
+  responses:
+    BadRequest:
+      description: Invalid input
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+    TooLarge:
+      description: Batch too large
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+    Internal:
+      description: Internal error
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+  schemas:
+    Error:
+      type: object
+      required: [error, status]
+      properties:
+        error: { type: string }
+        status: { type: integer }
+    Category:
+      type: string
+      enum: [fee, fx_drift, timing, duplicate, missing_counterparty, unclassified]
+    LegInput:
+      type: object
+      required: [source, txn_ref, amount_minor, currency, value_date, direction, counterparty]
+      properties:
+        source: { type: string, description: Originating system, e.g. ledger, card_network, swift }
+        txn_ref: { type: string }
+        amount_minor: { type: integer, format: int64, minimum: 1, description: Positive amount in minor units }
+        currency: { type: string, pattern: '^[A-Za-z]{3}$' }
+        value_date: { type: string, format: date }
+        direction: { type: string, enum: [debit, credit] }
+        counterparty: { type: string }
+        attrs:
+          type: object
+          additionalProperties: { type: string }
+          description: Free-form attributes; `batch_ref` links legs to a T3 settlement batch, `fee_minor`/`fx_rate` inform the classifier.
+    Leg:
+      allOf:
+        - $ref: '#/components/schemas/LegInput'
+        - type: object
+          properties:
+            id: { type: string, description: 'source:txn_ref:hash12' }
+            ingested_at: { type: string, format: date-time }
+            status: { type: string, enum: [open, matched, break] }
+            match_id: { type: string }
+            break_id: { type: string }
+    Match:
+      type: object
+      required: [id, leg_ids, tier, rule_id, confidence, residual_minor, currency, matched_at]
+      properties:
+        id: { type: string }
+        leg_ids: { type: array, items: { type: string } }
+        tier: { type: integer, enum: [1, 2, 3] }
+        rule_id: { type: string, description: 'rule@version, e.g. T1.exact@v1' }
+        confidence: { type: number, minimum: 0, maximum: 1 }
+        residual_minor: { type: integer, format: int64 }
+        currency: { type: string }
+        matched_at: { type: string, format: date-time }
+    Break:
+      type: object
+      required: [id, leg_ids, currency, counterparty, category, confidence, classifier_id, trigger, status, opened_at, age_seconds]
+      properties:
+        id: { type: string }
+        leg_ids: { type: array, items: { type: string } }
+        currency: { type: string }
+        counterparty: { type: string }
+        category: { $ref: '#/components/schemas/Category' }
+        confidence: { type: number }
+        classifier_id: { type: string, description: 'classifier@version' }
+        trigger: { type: string, enum: [ref_conflict, duplicate, window_expired] }
+        status: { type: string, enum: [open, resolved] }
+        opened_at: { type: string, format: date-time }
+        resolved_at: { type: string, format: date-time }
+        reason: { type: string, description: Classifier evidence while open; operator reason once resolved }
+        actor: { type: string }
+        age_seconds: { type: integer, format: int64 }
+    BatchResult:
+      type: object
+      required: [accepted, duplicates, matched, breaks, open, results]
+      properties:
+        accepted: { type: integer }
+        duplicates: { type: integer }
+        matched: { type: integer }
+        breaks: { type: integer }
+        open: { type: integer }
+        results:
+          type: array
+          items:
+            type: object
+            required: [leg_id, outcome]
+            properties:
+              leg_id: { type: string }
+              outcome: { type: string, enum: [duplicate, matched, break, open, resolved_break] }
+              match_id: { type: string }
+              break_id: { type: string }
+              rule_id: { type: string }
+    Stats:
+      type: object
+      properties:
+        legs_total: { type: integer }
+        legs_open: { type: integer }
+        legs_matched: { type: integer }
+        legs_in_break: { type: integer }
+        matches_total: { type: integer }
+        matches_by_tier: { type: object, additionalProperties: { type: integer } }
+        matches_by_rule: { type: object, additionalProperties: { type: integer } }
+        breaks_open: { type: integer }
+        breaks_resolved: { type: integer }
+        breaks_open_by_category: { type: object, additionalProperties: { type: integer } }
+        events_total: { type: integer }
+        auto_match_rate: { type: number, description: legs_matched / (legs_matched + legs_in_break) }
+        legs_by_source: { type: object, additionalProperties: { type: integer } }
+        oldest_open_break: { type: string, format: date-time }
+    Rules:
+      type: object
+      properties:
+        ToleranceBps: { type: integer }
+        ToleranceAbsMinor: { type: integer }
+        ValueDateWindowDays: { type: integer }
+        T3MaxCandidates: { type: integer }
+        T3MaxSubset: { type: integer }
+        T3RequireBatchHint: { type: boolean }
+    Event:
+      type: object
+      required: [seq, type, at, aggregate_id, payload]
+      properties:
+        seq: { type: integer, format: int64 }
+        type:
+          type: string
+          enum: [leg.ingested, leg.duplicate, leg.expired, match.created, break.opened, break.resolved, window.closed, replay.started]
+        at: { type: string, format: date-time }
+        aggregate_id: { type: string }
+        payload: { type: object }
+    ReplayResult:
+      type: object
+      properties:
+        from_seq: { type: integer, format: int64 }
+        through_seq: { type: integer, format: int64 }
+        events_read: { type: integer }
+        legs_replayed: { type: integer }
+        matched: { type: integer }
+        breaks: { type: integer }
+        open: { type: integer }

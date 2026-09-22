@@ -1,0 +1,9 @@
+recon-stream {{ .Chart.AppVersion }} deployed as {{ include "recon-stream.fullname" . }}.
+
+  kubectl -n {{ .Release.Namespace }} port-forward svc/{{ include "recon-stream.fullname" . }} 8080:{{ .Values.service.port }}
+  curl -s localhost:8080/v1/stats | jq .
+
+Store: {{ .Values.config.store }} | Kafka: {{ .Values.config.kafka.enabled }} ({{ .Values.config.kafka.topics }})
+{{- if eq .Values.config.store "postgres" }}
+Postgres DSN is read from Secret/{{ .Values.externalSecret.name }} key {{ .Values.externalSecret.postgresDSNKey }} (managed outside this chart).
+{{- end }}

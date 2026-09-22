@@ -1,0 +1,5 @@
+# Default owners for everything in the repo.
+*                       @udaykishore-resu
+/internal/domain/       @udaykishore-resu
+/deploy/                @udaykishore-resu
+/docs/adr/              @udaykishore-resu

@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "recon-stream.fullname" . }}
+  labels:
+    {{- include "recon-stream.labels" . | nindent 4 }}
+data:
+  RECON_HTTP_ADDR: ":{{ .Values.service.port }}"
+  RECON_LOG_LEVEL: {{ .Values.config.logLevel | quote }}
+  RECON_STORE: {{ .Values.config.store | quote }}
+  RECON_WINDOW_TTL: {{ .Values.config.windowTTL | quote }}
+  RECON_SWEEP_INTERVAL: {{ .Values.config.sweepInterval | quote }}
+  RECON_TOLERANCE_BPS: {{ .Values.config.toleranceBps | quote }}
+  RECON_TOLERANCE_ABS_MINOR: {{ .Values.config.toleranceAbsMinor | quote }}
+  RECON_VALUE_DATE_WINDOW_DAYS: {{ .Values.config.valueDateWindowDays | quote }}
+  RECON_T3_MAX_CANDIDATES: {{ .Values.config.t3MaxCandidates | quote }}
+  RECON_T3_MAX_SUBSET: {{ .Values.config.t3MaxSubset | quote }}
+  RECON_T3_REQUIRE_BATCH_HINT: {{ .Values.config.t3RequireBatchHint | quote }}
+  RECON_SHUTDOWN_TIMEOUT: {{ .Values.config.shutdownTimeout | quote }}
+  RECON_KAFKA_ENABLED: {{ .Values.config.kafka.enabled | quote }}
+  RECON_KAFKA_BROKERS: {{ .Values.config.kafka.brokers | quote }}
+  RECON_KAFKA_GROUP: {{ .Values.config.kafka.group | quote }}
+  RECON_KAFKA_TOPICS: {{ .Values.config.kafka.topics | quote }}
+  RECON_OTEL_ENDPOINT: {{ .Values.config.otel.endpoint | quote }}
+  RECON_OTEL_INSECURE: {{ .Values.config.otel.insecure | quote }}

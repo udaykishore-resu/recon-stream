@@ -1,0 +1,12 @@
+apiVersion: v2
+name: recon-stream
+description: Streaming reconciliation engine for ledgers, payment rails and card processors
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+home: https://github.com/udaykishore-resu/recon-stream
+sources:
+  - https://github.com/udaykishore-resu/recon-stream
+maintainers:
+  - name: Udaykishore Resu
+keywords: [reconciliation, payments, kafka, event-sourcing, fintech]

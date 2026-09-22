@@ -1,0 +1,17 @@
+# Apply with:
+#   gh repo edit udaykishore-resu/recon-stream --description "$(yq .description .github/repo-metadata.yaml)"
+#   yq -r '.topics[]' .github/repo-metadata.yaml | xargs -I{} gh repo edit udaykishore-resu/recon-stream --add-topic {}
+description: "Streaming reconciliation engine for ledgers, payment rails and card processors: deterministic tiered matching, classified breaks, event-sourced replay."
+topics:
+  - go
+  - kubernetes
+  - kafka
+  - postgresql
+  - reconciliation
+  - payments
+  - fintech
+  - event-sourcing
+  - stream-processing
+  - opentelemetry
+  - prometheus
+  - helm

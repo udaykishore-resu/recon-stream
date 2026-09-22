@@ -1,0 +1,2746 @@
+{
+  "description": "200 legs: 105 ledger postings vs 95 card-network settlement records (Visa/USD, Mastercard/GBP) for value dates 2026-09-14..16. Expected: 191 legs auto-matched (T1/T2/T3), 9 legs in breaks (fee, fx_drift, timing, duplicate, 2x missing_counterparty).",
+  "legs": [
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240001",
+      "amount_minor": 38002,
+      "currency": "GBP",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-3391"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240002",
+      "amount_minor": 24463,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-6688"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240003",
+      "amount_minor": 49231,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-4457"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240004",
+      "amount_minor": 208851,
+      "currency": "GBP",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-2210"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240005",
+      "amount_minor": 234256,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-4457"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240006",
+      "amount_minor": 6802,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-6688"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240007",
+      "amount_minor": 249711,
+      "currency": "GBP",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-5120"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240008",
+      "amount_minor": 193852,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-6688"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240009",
+      "amount_minor": 129749,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-2210"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240010",
+      "amount_minor": 82033,
+      "currency": "GBP",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-3391"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240011",
+      "amount_minor": 189557,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-8891"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240012",
+      "amount_minor": 126954,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-7014"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240013",
+      "amount_minor": 181379,
+      "currency": "GBP",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-7014"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240014",
+      "amount_minor": 86923,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-2210"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240015",
+      "amount_minor": 244310,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-8891"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240016",
+      "amount_minor": 104575,
+      "currency": "GBP",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-6688"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240017",
+      "amount_minor": 87174,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-4457"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240018",
+      "amount_minor": 14517,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-8891"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240019",
+      "amount_minor": 98869,
+      "currency": "GBP",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-4457"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240020",
+      "amount_minor": 241347,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-8891"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240021",
+      "amount_minor": 114704,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-7014"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240022",
+      "amount_minor": 99752,
+      "currency": "GBP",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-2210"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240023",
+      "amount_minor": 60016,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-4457"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240024",
+      "amount_minor": 6765,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-6688"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240025",
+      "amount_minor": 216485,
+      "currency": "GBP",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-3391"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240026",
+      "amount_minor": 106148,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-6688"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240027",
+      "amount_minor": 229397,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-3391"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240028",
+      "amount_minor": 87748,
+      "currency": "GBP",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-4457"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240029",
+      "amount_minor": 214887,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-3391"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240030",
+      "amount_minor": 64896,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-4457"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240031",
+      "amount_minor": 30379,
+      "currency": "GBP",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-4457"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240032",
+      "amount_minor": 227515,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-8891"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240033",
+      "amount_minor": 222377,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-1023"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240034",
+      "amount_minor": 191871,
+      "currency": "GBP",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-7014"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240035",
+      "amount_minor": 248409,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-6688"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240036",
+      "amount_minor": 39667,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-3391"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240037",
+      "amount_minor": 195656,
+      "currency": "GBP",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-1023"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240038",
+      "amount_minor": 66592,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-5120"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240039",
+      "amount_minor": 51465,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-3391"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240040",
+      "amount_minor": 83154,
+      "currency": "GBP",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-7014"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240041",
+      "amount_minor": 15239,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-3391"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240042",
+      "amount_minor": 210518,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-3391"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240043",
+      "amount_minor": 15526,
+      "currency": "GBP",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-4457"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240044",
+      "amount_minor": 176748,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-1023"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240045",
+      "amount_minor": 20860,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-2210"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240046",
+      "amount_minor": 124906,
+      "currency": "GBP",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-2210"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240047",
+      "amount_minor": 16107,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-4457"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240048",
+      "amount_minor": 54004,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-2210"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240049",
+      "amount_minor": 158481,
+      "currency": "GBP",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-1023"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240050",
+      "amount_minor": 162658,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-8891"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240051",
+      "amount_minor": 212753,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-1023"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240052",
+      "amount_minor": 160739,
+      "currency": "GBP",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-8891"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240053",
+      "amount_minor": 118343,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-5120"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240054",
+      "amount_minor": 249664,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-4457"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240055",
+      "amount_minor": 196416,
+      "currency": "GBP",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-8891"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240056",
+      "amount_minor": 54388,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-3391"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240057",
+      "amount_minor": 206976,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-2210"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240058",
+      "amount_minor": 247557,
+      "currency": "GBP",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-1023"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240059",
+      "amount_minor": 135626,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-6688"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240060",
+      "amount_minor": 22326,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-4457"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240061",
+      "amount_minor": 213482,
+      "currency": "GBP",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-5120"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240062",
+      "amount_minor": 114840,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-8891"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240063",
+      "amount_minor": 169449,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-2210"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240064",
+      "amount_minor": 84968,
+      "currency": "GBP",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-7014"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240065",
+      "amount_minor": 228339,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-1023"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240066",
+      "amount_minor": 60286,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-7014"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240067",
+      "amount_minor": 142184,
+      "currency": "GBP",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-2210"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240068",
+      "amount_minor": 215922,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-7014"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240069",
+      "amount_minor": 11256,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-1023"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240070",
+      "amount_minor": 89203,
+      "currency": "GBP",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-8891"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240071",
+      "amount_minor": 5751,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-3391"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240072",
+      "amount_minor": 43450,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-8891"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240073",
+      "amount_minor": 1330,
+      "currency": "GBP",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-6688"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240074",
+      "amount_minor": 201291,
+      "currency": "USD",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-3391"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240075",
+      "amount_minor": 68682,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-2210"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240076",
+      "amount_minor": 78803,
+      "currency": "GBP",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-5120"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240077",
+      "amount_minor": 158784,
+      "currency": "GBP",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-7014"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240078",
+      "amount_minor": 47591,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-7014"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240079",
+      "amount_minor": 244997,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-1023"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240080",
+      "amount_minor": 291444,
+      "currency": "GBP",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-5120"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240081",
+      "amount_minor": 386682,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-3391"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240082",
+      "amount_minor": 136931,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-3391"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240083",
+      "amount_minor": 256953,
+      "currency": "GBP",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-4457"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240084",
+      "amount_minor": 318054,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-5120"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240085",
+      "amount_minor": 364774,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-8891"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240086",
+      "amount_minor": 18772,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "batch_ref": "VISA-BATCH-20260915-01",
+        "channel": "card_present",
+        "merchant_id": "M-6688"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240087",
+      "amount_minor": 57178,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "batch_ref": "VISA-BATCH-20260915-01",
+        "channel": "card_present",
+        "merchant_id": "M-7014"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240088",
+      "amount_minor": 82093,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "batch_ref": "VISA-BATCH-20260915-01",
+        "channel": "card_present",
+        "merchant_id": "M-6688"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240089",
+      "amount_minor": 85671,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "batch_ref": "VISA-BATCH-20260915-02",
+        "channel": "card_present",
+        "merchant_id": "M-4457"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240090",
+      "amount_minor": 70939,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "batch_ref": "VISA-BATCH-20260915-02",
+        "channel": "card_present",
+        "merchant_id": "M-8891"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240091",
+      "amount_minor": 1954,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "batch_ref": "VISA-BATCH-20260915-02",
+        "channel": "card_present",
+        "merchant_id": "M-7014"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240092",
+      "amount_minor": 77886,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "batch_ref": "VISA-BATCH-20260915-03",
+        "channel": "card_present",
+        "merchant_id": "M-7014"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240093",
+      "amount_minor": 61377,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "batch_ref": "VISA-BATCH-20260915-03",
+        "channel": "card_present",
+        "merchant_id": "M-1023"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240094",
+      "amount_minor": 21377,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "batch_ref": "VISA-BATCH-20260915-03",
+        "channel": "card_present",
+        "merchant_id": "M-2210"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240095",
+      "amount_minor": 80827,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "batch_ref": "VISA-BATCH-20260915-04",
+        "channel": "card_present",
+        "merchant_id": "M-8891"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240096",
+      "amount_minor": 23151,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "batch_ref": "VISA-BATCH-20260915-04",
+        "channel": "card_present",
+        "merchant_id": "M-3391"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240097",
+      "amount_minor": 30755,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "batch_ref": "VISA-BATCH-20260915-04",
+        "channel": "card_present",
+        "merchant_id": "M-1023"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240098",
+      "amount_minor": 19491,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "batch_ref": "VISA-BATCH-20260915-04",
+        "channel": "card_present",
+        "merchant_id": "M-8891"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240099",
+      "amount_minor": 761266,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-6688",
+        "note": "ref not echoed by network"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240100",
+      "amount_minor": 375316,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-7014",
+        "note": "ref not echoed by network"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240101",
+      "amount_minor": 152815,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-5120"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240102",
+      "amount_minor": 117747,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-2210",
+        "original_currency": "EUR"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240103",
+      "amount_minor": 35121,
+      "currency": "GBP",
+      "value_date": "2026-09-14",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-5120"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240104",
+      "amount_minor": 18172,
+      "currency": "USD",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "VISA",
+      "attrs": {
+        "account": "1200-SETTLEMENT-VISA",
+        "channel": "card_present",
+        "merchant_id": "M-8891",
+        "note": "authorised, never presented"
+      }
+    },
+    {
+      "source": "ledger",
+      "txn_ref": "TXN-240105",
+      "amount_minor": 30072,
+      "currency": "GBP",
+      "value_date": "2026-09-15",
+      "direction": "debit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "account": "1200-SETTLEMENT-MASTERCARD",
+        "channel": "card_present",
+        "merchant_id": "M-7014",
+        "note": "authorised, never presented"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240001",
+      "amount_minor": 38002,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000826038967094079",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240002",
+      "amount_minor": 24463,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000279873767526366",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240003",
+      "amount_minor": 49231,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000204005334718586",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240004",
+      "amount_minor": 208851,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000619800984279357",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240005",
+      "amount_minor": 234256,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000134737989320096",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240006",
+      "amount_minor": 6802,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000493941878176395",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240007",
+      "amount_minor": 249711,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000395016238582601",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240008",
+      "amount_minor": 193852,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000876392542518255",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240009",
+      "amount_minor": 129749,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000348757013634968",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240010",
+      "amount_minor": 82033,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000787946165496895",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240011",
+      "amount_minor": 189557,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000486935647023780",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240012",
+      "amount_minor": 126954,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000342305573442951",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240013",
+      "amount_minor": 181379,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000144591776886961",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240014",
+      "amount_minor": 86923,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000706470390195122",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240015",
+      "amount_minor": 244310,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000850235623546206",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240016",
+      "amount_minor": 104575,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000487186733150763",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240017",
+      "amount_minor": 87174,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000767795944600117",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240018",
+      "amount_minor": 14517,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000287609399820142",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240019",
+      "amount_minor": 98869,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000943256460742500",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240020",
+      "amount_minor": 241347,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000534945330001365",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240021",
+      "amount_minor": 114704,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000482424457646080",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240022",
+      "amount_minor": 99752,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000277033161524716",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240023",
+      "amount_minor": 60016,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000450753780033958",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240024",
+      "amount_minor": 6765,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000985530406899877",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240025",
+      "amount_minor": 216485,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000206204834847617",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240026",
+      "amount_minor": 106148,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000439631723407518",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240027",
+      "amount_minor": 229397,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000936939615921011",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240028",
+      "amount_minor": 87748,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000249199913638899",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240029",
+      "amount_minor": 214887,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000595437638658860",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240030",
+      "amount_minor": 64896,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000309231885285733",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240031",
+      "amount_minor": 30379,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000187174535789320",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240032",
+      "amount_minor": 227515,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000491727477985505",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240033",
+      "amount_minor": 222377,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000103981233484068",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240034",
+      "amount_minor": 191871,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000211404945355433",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240035",
+      "amount_minor": 248409,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000318152319261441",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240036",
+      "amount_minor": 39667,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000304641587432242",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240037",
+      "amount_minor": 195656,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000202234257264991",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240038",
+      "amount_minor": 66592,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000843006469714156",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240039",
+      "amount_minor": 51465,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000726353828726468",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240040",
+      "amount_minor": 83154,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000958464318298327",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240041",
+      "amount_minor": 15239,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000501586687366953",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240042",
+      "amount_minor": 210518,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000008672752091956",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240043",
+      "amount_minor": 15526,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000722460065341887",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240044",
+      "amount_minor": 176748,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000051800170294123",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240045",
+      "amount_minor": 20860,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000976916128220775",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240046",
+      "amount_minor": 124906,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000317485151594125",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240047",
+      "amount_minor": 16107,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000294349010542864",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240048",
+      "amount_minor": 54004,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000673839266479357",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240049",
+      "amount_minor": 158481,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000453291079528833",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240050",
+      "amount_minor": 162658,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000091576863056638",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240051",
+      "amount_minor": 212753,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000505708570027487",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240052",
+      "amount_minor": 160739,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000439237001667694",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240053",
+      "amount_minor": 118343,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000999834525793975",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240054",
+      "amount_minor": 249664,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000428860754134639",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240055",
+      "amount_minor": 196416,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000941058456154134",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240056",
+      "amount_minor": 54388,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000157041193454566",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240057",
+      "amount_minor": 206976,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000514875542712103",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240058",
+      "amount_minor": 247557,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000748915048281042",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240059",
+      "amount_minor": 135626,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000201557247421560",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240060",
+      "amount_minor": 22326,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000479379733840663",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240061",
+      "amount_minor": 213482,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000495859095729200",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240062",
+      "amount_minor": 114840,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000591346468914966",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240063",
+      "amount_minor": 169449,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000853564366467264",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240064",
+      "amount_minor": 84968,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000397723962061580",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240065",
+      "amount_minor": 228339,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000139736039137354",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240066",
+      "amount_minor": 60286,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000443529819217836",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240067",
+      "amount_minor": 142184,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000796534579421372",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240068",
+      "amount_minor": 215922,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000833959305899684",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240069",
+      "amount_minor": 11256,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000389928801993989",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240070",
+      "amount_minor": 89203,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000602939492305930",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240071",
+      "amount_minor": 5751,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000325114645557773",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240072",
+      "amount_minor": 43450,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000066765148044369",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240073",
+      "amount_minor": 1330,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000551662031330033",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240074",
+      "amount_minor": 201291,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000657856335439518",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240075",
+      "amount_minor": 68682,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000355627336939175",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240076",
+      "amount_minor": 78803,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000367920348241253",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240077",
+      "amount_minor": 158782,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000402317344186056",
+        "rounding": "scheme",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240078",
+      "amount_minor": 47592,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000741644786441363",
+        "rounding": "scheme",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240079",
+      "amount_minor": 244996,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000539600974625863",
+        "rounding": "scheme",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240080",
+      "amount_minor": 291445,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000044900015263495",
+        "rounding": "scheme",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240081",
+      "amount_minor": 386681,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000031326825090410",
+        "rounding": "scheme",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240082",
+      "amount_minor": 136933,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000251257992587820",
+        "rounding": "scheme",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240083",
+      "amount_minor": 256951,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000703950769427993",
+        "rounding": "scheme",
+        "settlement_file": "MASTERCARD-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240084",
+      "amount_minor": 318056,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000183858388915893",
+        "rounding": "scheme",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240085",
+      "amount_minor": 364773,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000418105174766404",
+        "rounding": "scheme",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "VISA-BATCH-20260915-01",
+      "amount_minor": 158043,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000513195166314241",
+        "record_type": "batch_settlement",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "VISA-BATCH-20260915-02",
+      "amount_minor": 158564,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000833069036332724",
+        "record_type": "batch_settlement",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "VISA-BATCH-20260915-03",
+      "amount_minor": 160640,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000307998464210864",
+        "record_type": "batch_settlement",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "VISA-BATCH-20260915-04",
+      "amount_minor": 154224,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000942214845315955",
+        "record_type": "batch_settlement",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "ARN-745100003424",
+      "amount_minor": 761266,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000494956405194552",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "ARN-745100001548",
+      "amount_minor": 375316,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000848980739797429",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240101",
+      "amount_minor": 148995,
+      "currency": "USD",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000487992896813928",
+        "interchange_minor": "3820",
+        "record_type": "net_settlement",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240102",
+      "amount_minor": 108127,
+      "currency": "EUR",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "VISA",
+      "attrs": {
+        "arn": "74510000300084278887819",
+        "fx_rate": "0.9183",
+        "settlement_currency": "EUR",
+        "settlement_file": "VISA-STL-20260916-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240103",
+      "amount_minor": 35121,
+      "currency": "GBP",
+      "value_date": "2026-09-20",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000820146463832587",
+        "settlement_file": "MASTERCARD-STL-20260920-01"
+      }
+    },
+    {
+      "source": "card_network",
+      "txn_ref": "TXN-240001",
+      "amount_minor": 38002,
+      "currency": "GBP",
+      "value_date": "2026-09-16",
+      "direction": "credit",
+      "counterparty": "MASTERCARD",
+      "attrs": {
+        "arn": "74510000826038967094079",
+        "resend": "true",
+        "settlement_file": "MASTERCARD-STL-20260917-01"
+      }
+    }
+  ]
+}

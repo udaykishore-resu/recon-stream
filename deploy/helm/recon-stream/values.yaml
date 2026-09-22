@@ -1,0 +1,134 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/udaykishore-resu/recon-stream
+  tag: ""            # defaults to .Chart.AppVersion
+  pullPolicy: IfNotPresent
+imagePullSecrets: []
+
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations:
+  prometheus.io/scrape: "true"
+  prometheus.io/port: "8080"
+  prometheus.io/path: "/metrics"
+podLabels: {}
+
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 65532
+  runAsGroup: 65532
+  fsGroup: 65532
+  seccompProfile:
+    type: RuntimeDefault
+
+securityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  capabilities:
+    drop: ["ALL"]
+
+service:
+  type: ClusterIP
+  port: 8080
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 256Mi
+  limits:
+    cpu: "1"
+    memory: 1Gi
+
+# Every RECON_* variable is documented in the README configuration table.
+config:
+  logLevel: info
+  store: postgres
+  windowTTL: 48h
+  sweepInterval: 30s
+  toleranceBps: 10
+  toleranceAbsMinor: 2
+  valueDateWindowDays: 2
+  t3MaxCandidates: 24
+  t3MaxSubset: 6
+  t3RequireBatchHint: true
+  shutdownTimeout: 25s
+  kafka:
+    enabled: true
+    brokers: kafka-0.kafka:9092,kafka-1.kafka:9092
+    group: recon-stream
+    topics: ledger.legs,rail.legs
+  otel:
+    endpoint: otel-collector.observability:4318
+    insecure: true
+
+# Secrets are external: the chart never renders secret material. Point to an
+# existing Secret holding the Postgres DSN (e.g. created by External Secrets).
+externalSecret:
+  name: recon-stream-secrets
+  postgresDSNKey: RECON_POSTGRES_DSN
+
+probes:
+  liveness:
+    initialDelaySeconds: 5
+    periodSeconds: 10
+  readiness:
+    initialDelaySeconds: 5
+    periodSeconds: 10
+    failureThreshold: 3
+
+# The engine is a single writer per partition set; scale with Kafka partitions.
+# Default HPA is off because scaling replicas beyond partition count buys nothing.
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 4
+  targetCPUUtilizationPercentage: 70
+
+podDisruptionBudget:
+  enabled: true
+  maxUnavailable: 1
+
+serviceMonitor:
+  enabled: false
+  interval: 30s
+  scrapeTimeout: 10s
+  labels: {}
+
+networkPolicy:
+  enabled: true
+  # Namespaces/pods allowed to call the HTTP API and scrape metrics.
+  ingressFrom:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: observability
+    - podSelector: {}
+  # Egress to Kafka, Postgres, OTel collector and DNS.
+  egress:
+    - to:
+        - namespaceSelector: {}
+      ports:
+        - { protocol: TCP, port: 9092 }
+        - { protocol: TCP, port: 5432 }
+        - { protocol: TCP, port: 4318 }
+    - to:
+        - namespaceSelector: {}
+          podSelector:
+            matchLabels:
+              k8s-app: kube-dns
+      ports:
+        - { protocol: UDP, port: 53 }
+        - { protocol: TCP, port: 53 }
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+topologySpreadConstraints: []
+terminationGracePeriodSeconds: 30

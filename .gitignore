@@ -1,0 +1,12 @@
+bin/
+coverage.out
+*.test
+*.out
+dist/
+.idea/
+.vscode/
+*.swp
+.DS_Store
+.env
+.env.*
+!.env.example
